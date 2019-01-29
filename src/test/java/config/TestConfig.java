@@ -11,7 +11,7 @@ public class TestConfig {
         RestAssured.port = 8080;
         RestAssured.basePath = "/app/";
 
-        // Should be used for catching response (use it with opening proxy tool like Charles)
+        // Should be used for tracking http traffic (use it with opening proxy tool like Charles)
         // RestAssured.proxy("localhost", 8888);
 
     }
