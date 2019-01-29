@@ -1,0 +1,9 @@
+
+.idea/vcs.xml
+*.bin
+*.lock
+.gradle/buildOutputCleanup/cache.properties
+.gradle/vcsWorkingDirs/gc.properties
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/vcs.xml
