@@ -1,3 +1,4 @@
+import config.EndPoint;
 import config.TestConfig;
 import org.junit.Test;
 
@@ -20,6 +21,16 @@ public class MyFirstTest extends TestConfig {
                 .when()
                 .delete("/videogames/5")
                 .then()
+                .spec(responseSpec);
+    }
+
+    @Test
+    public void getAllGames() {
+        given()
+                .spec(videoGame_requestSpec).log().all().
+                when()
+                .get(EndPoint.GET_VIDEOGAMES)
+                .then().log().body()
                 .spec(responseSpec);
     }
 }

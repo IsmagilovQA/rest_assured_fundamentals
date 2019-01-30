@@ -16,7 +16,7 @@ public class TestConfig {
     @BeforeClass
     public static void setup() {
 
-        RestAssured.proxy("localhost", 8888);
+        // RestAssured.proxy("localhost", 8888); // in case you wwant to track traffic via Charles
 
         videoGame_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://localhost")
@@ -26,7 +26,7 @@ public class TestConfig {
                 .addHeader("Accept", "application/json")
                 .build();
         /*
-        if we want to include these checks within all tests.
+        if we want to include these checks within all tests - we should write the line below.
         If no, we just need to comment it and specify spec() in test
         */
         // RestAssured.requestSpecification = videoGame_requestSpec;
