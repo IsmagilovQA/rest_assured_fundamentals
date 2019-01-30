@@ -35,6 +35,7 @@ public class TestConfig {
                 .setBaseUri("http://api.football-data.org")
                 .setBasePath("/v2/")
                 .addHeader("X-Auth-Token", "5073ec390ec249b38233a8be389f6ee6")
+                .addHeader("X-Response-Control", "minified")
                 .build();
 
 
