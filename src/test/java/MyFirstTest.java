@@ -12,4 +12,14 @@ public class MyFirstTest extends TestConfig {
                 .then().log().all(); // log all data
 
     }
+
+    @Test
+    public void deleteGame() {
+        given()
+                .spec(videoGame_requestSpec)// specificly
+                .when()
+                .delete("/videogames/5")
+                .then()
+                .spec(responseSpec);
+    }
 }
