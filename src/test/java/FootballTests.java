@@ -1,4 +1,6 @@
 import config.TestConfig;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.*;
@@ -32,6 +34,24 @@ public class FootballTests extends TestConfig {
                 .when().get("competitions/2000/teams")
                 .then()
                 .body("teams.name[0]", is("Uruguay"));
+    }
 
+
+    @Test
+    public void extractAllteamData() {
+        String responseBody = given().spec(football_requestSpec)
+                .when().get("competitions/2000/teams").asString(); // save as string
+        System.out.println(responseBody);
+    }
+
+
+    @Test
+    public void extractAllteamData_DoCheckfirst() {
+        Response response = given().spec(football_requestSpec)
+                .when().get("competitions/2000/teams")
+                .then().assertThat()
+                .contentType(ContentType.JSON)
+                .extract().response();
+        String jsonResponseAsString = response.asString();
     }
 }
