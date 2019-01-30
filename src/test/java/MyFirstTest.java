@@ -29,7 +29,7 @@ public class MyFirstTest extends TestConfig {
         given()
                 .spec(videoGame_requestSpec).log().all().
                 when()
-                .get(EndPoint.GET_VIDEOGAMES)
+                .get(EndPoint.VIDEOGAMES)
                 .then().log().body()
                 .spec(responseSpec);
     }

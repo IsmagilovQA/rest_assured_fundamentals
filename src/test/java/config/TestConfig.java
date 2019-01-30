@@ -16,20 +16,20 @@ public class TestConfig {
     @BeforeClass
     public static void setup() {
 
-        // RestAssured.proxy("localhost", 8888); // in case you wwant to track traffic via Charles
+        //RestAssured.proxy("localhost", 8888); // in case you wwant to track traffic via Charles
 
         videoGame_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://localhost")
                 .setPort(8080)
                 .setBasePath("/app/")
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Accept", "application/json")
+                .addHeader("Content-Type", "application/json") // or xml
+                .addHeader("Accept", "application/json") // or xml
                 .build();
         /*
         if we want to include these checks within all tests - we should write the line below.
         If no, we just need to comment it and specify spec() in test
         */
-        // RestAssured.requestSpecification = videoGame_requestSpec;
+        RestAssured.requestSpecification = videoGame_requestSpec;
 
         football_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://api.football-data.org")
@@ -42,7 +42,7 @@ public class TestConfig {
         responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
                 .build();
-        // RestAssured.responseSpecification = responseSpec;
+        RestAssured.responseSpecification = responseSpec;
 
 
     }
