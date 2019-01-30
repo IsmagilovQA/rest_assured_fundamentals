@@ -1,8 +1,9 @@
 import config.EndPoint;
 import config.TestConfig;
+import io.restassured.response.Response;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 
 public class VideoGameDBTests extends TestConfig {
 
@@ -81,6 +82,20 @@ public class VideoGameDBTests extends TestConfig {
         given()
                 .pathParam("videoGameId", 7)
                 .when().get(EndPoint.SINGE_VIDEOGAME)
+                .then().log().all();
+    }
+
+
+    @Test
+    public void testVideoGameSerializationByJSON() {
+
+        VideoGame_POJO videoGame = new VideoGame_POJO("21", "Super Mario",
+                "2019-04-29", "75",
+                "Action", "Kids");
+
+        given().spec(videoGame_requestSpec)
+                .body(videoGame)
+                .when().post(EndPoint.VIDEOGAMES)
                 .then().log().all();
     }
 }

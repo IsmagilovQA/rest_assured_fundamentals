@@ -29,7 +29,7 @@ public class TestConfig {
         if we want to include these checks within all tests - we should write the line below.
         If no, we just need to comment it and specify spec() in test
         */
-        //RestAssured.requestSpecification = videoGame_requestSpec;
+        RestAssured.requestSpecification = videoGame_requestSpec;
 
         football_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://api.football-data.org")
