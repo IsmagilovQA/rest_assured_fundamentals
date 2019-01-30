@@ -2,7 +2,9 @@ package config;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.junit.BeforeClass;
 
 public class TestConfig {
@@ -21,6 +23,12 @@ public class TestConfig {
                 .addHeader("Accept", "application/json")
                 .build();
         RestAssured.requestSpecification = requestSpecification;
+
+
+        ResponseSpecification responseSpecification = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .build();
+        RestAssured.responseSpecification = responseSpecification;
 
     }
 }
