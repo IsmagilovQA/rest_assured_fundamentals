@@ -76,4 +76,11 @@ public class VideoGameDBTests extends TestConfig {
     }
 
 
+    @Test
+    public void getSingleGame() {
+        given()
+                .pathParam("videoGameId", 7)
+                .when().get(EndPoint.SINGE_VIDEOGAME)
+                .then().log().all();
+    }
 }

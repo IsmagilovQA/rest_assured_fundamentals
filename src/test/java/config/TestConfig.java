@@ -29,13 +29,12 @@ public class TestConfig {
         if we want to include these checks within all tests - we should write the line below.
         If no, we just need to comment it and specify spec() in test
         */
-        RestAssured.requestSpecification = videoGame_requestSpec;
+        //RestAssured.requestSpecification = videoGame_requestSpec;
 
         football_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://api.football-data.org")
-                .setBasePath("/v1/")
+                .setBasePath("/v2/")
                 .addHeader("X-Auth-Token", "5073ec390ec249b38233a8be389f6ee6")
-                .addHeader("X-Response-Control", "minified")
                 .build();
 
 
