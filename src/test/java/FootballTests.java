@@ -1,9 +1,10 @@
 import config.TestConfig;
 import io.restassured.http.ContentType;
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -53,5 +54,21 @@ public class FootballTests extends TestConfig {
                 .contentType(ContentType.JSON)
                 .extract().response();
         String jsonResponseAsString = response.asString();
+    }
+
+
+    @Test
+    public void extractHeaders() {
+        Response response = given().spec(football_requestSpec)
+                .when().get("competitions/2000/teams")
+                .then().assertThat()
+                .contentType(ContentType.JSON)
+                .extract().response();
+
+        Headers headers = response.getHeaders(); // get all headers
+
+        String contentType = response.getHeader("Content-Type"); // get specific header by name
+        System.out.println(contentType);
+
     }
 }
