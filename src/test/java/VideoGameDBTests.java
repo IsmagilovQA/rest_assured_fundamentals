@@ -6,6 +6,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.given;
 import static io.restassured.internal.matcher.xml.XmlXsdMatcher.matchesXsdInClasspath;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.lessThan;
 
 public class VideoGameDBTests extends TestConfig {
 
@@ -128,6 +129,24 @@ public class VideoGameDBTests extends TestConfig {
                 .pathParam("videoGameId", 21)
                 .when().get(EndPoint.SINGE_VIDEOGAME)
                 .then().body(matchesJsonSchemaInClasspath("VideoGameSchemaJSON.json"));
+    }
 
+
+    @Test
+    public void testResponseTime() {
+        long responseTime =
+                given()
+                .pathParam("videoGameId", 7)
+                .when().get(EndPoint.SINGE_VIDEOGAME).time();
+        System.out.println(responseTime);
+    }
+
+
+    @Test
+    public void testResponseTimeAssertion() {
+        given()
+                        .pathParam("videoGameId", 7)
+                        .when().get(EndPoint.SINGE_VIDEOGAME)
+                .then().assertThat().time(lessThan(1000L)); // 1000 milliseconds
     }
 }
