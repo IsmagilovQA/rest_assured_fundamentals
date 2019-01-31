@@ -34,4 +34,28 @@ public class GPathJSONTests extends TestConfig {
         System.out.println(values);
     }
 
+
+    @Test
+    public void extractSingleValueWithHighestNumber() {
+        Response response = given().get("teams/18");
+        String playerName = response.path("squad.max {it.shirtNumber}.name");
+        System.out.println(playerName);
+    }
+
+
+    @Test
+    public void collectAllShirtNumbers() {
+        Response response = given().get("teams/18");
+        List<Integer> collectAllShirts = response.path("squad.collect {it.shirtNumber}");
+        System.out.println(collectAllShirts);
+    }
+
+
+    @Test
+    public void extractMultipleValuesAndSum() {
+        Response response = given().get("teams/18");
+        int sumAllId = response.path("squad.collect {it.id}.sum()");
+        System.out.println(sumAllId);
+    }
+
 }
