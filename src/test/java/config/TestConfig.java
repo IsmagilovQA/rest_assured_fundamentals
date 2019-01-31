@@ -45,7 +45,7 @@ public class TestConfig {
 
         responseSpec = new ResponseSpecBuilder()
                 .expectStatusCode(200)
-                .expectResponseTime(lessThan(3000L))
+                .expectResponseTime(lessThan(10000L))
                 .build();
         RestAssured.responseSpecification = responseSpec;
 
