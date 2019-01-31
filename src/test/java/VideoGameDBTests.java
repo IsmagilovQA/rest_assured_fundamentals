@@ -98,4 +98,16 @@ public class VideoGameDBTests extends TestConfig {
                 .when().post(EndPoint.VIDEOGAMES)
                 .then().log().all();
     }
+
+
+    @Test
+    public void testVideoGameDeserializationByJSON() {
+        Response response = given()
+                .pathParam("videoGameId", 21)
+                .when().get(EndPoint.SINGE_VIDEOGAME);
+
+        VideoGame_POJO videoGame = response.getBody().as(VideoGame_POJO.class);
+        System.out.println(videoGame.toString());
+
+    }
 }

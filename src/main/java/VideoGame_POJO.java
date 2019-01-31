@@ -21,6 +21,11 @@ public class VideoGame_POJO {
         this.category = category;
     }
 
+    // Default constructor
+    public VideoGame_POJO() {
+
+    }
+
 
     public String getReviewScore() {
         return reviewScore;
