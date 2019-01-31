@@ -4,6 +4,7 @@ import io.restassured.response.Response;
 import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.internal.matcher.xml.XmlXsdMatcher.matchesXsdInClasspath;
 
 public class VideoGameDBTests extends TestConfig {
 
@@ -108,6 +109,15 @@ public class VideoGameDBTests extends TestConfig {
 
         VideoGame_POJO videoGame = response.getBody().as(VideoGame_POJO.class);
         System.out.println(videoGame.toString());
+    }
+
+
+    @Test
+    public void testVideoGameSchemaXML() {
+        given()
+                .pathParam("videoGameId", 21)
+                .when().get(EndPoint.SINGE_VIDEOGAME)
+                .then().body(matchesXsdInClasspath("VideoGame.xsd"));
 
     }
 }
