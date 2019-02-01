@@ -24,14 +24,14 @@ public class TestConfig {
                 .setBaseUri("http://localhost")
                 .setPort(8080)
                 .setBasePath("/app/")
-                .addHeader("Content-Type", "application/json") // or xml
-                .addHeader("Accept", "application/json") // or xml
+                .addHeader("Content-Type", "application/xml") // or xml
+                .addHeader("Accept", "application/xml") // or xml
                 .build();
         /*
         if we want to include these checks within all tests - we should write the line below.
         If no, we just need to comment it and specify spec() in test
         */
-        //RestAssured.requestSpecification = videoGame_requestSpec;
+        RestAssured.requestSpecification = videoGame_requestSpec;
 
         football_requestSpec = new RequestSpecBuilder()
                 .setBaseUri("http://api.football-data.org")
@@ -40,7 +40,7 @@ public class TestConfig {
                 .addHeader("X-Response-Control", "minified")
                 .build();
 
-        RestAssured.requestSpecification = football_requestSpec;
+        // RestAssured.requestSpecification = football_requestSpec;
 
 
         responseSpec = new ResponseSpecBuilder()
