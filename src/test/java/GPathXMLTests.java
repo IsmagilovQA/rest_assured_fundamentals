@@ -16,4 +16,14 @@ public class GPathXMLTests extends TestConfig {
        System.out.println(firstName);
    }
 
+
+   @Test
+    public void getAttributeName() {
+       Response response = get(EndPoint.VIDEOGAMES);
+
+       String category = response.path("videoGames.videoGame[0].@category");
+       System.out.println(category);
+
+   }
+
 }
