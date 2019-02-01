@@ -42,4 +42,18 @@ public class AuthenticationTests {
         given().auth().oauth2("accessToken")
                 .when().get("http://localhost:8080/someEndpoint");
     }
+
+
+    @Test
+    public void relaxedHTTPSTest() {
+        given().relaxedHTTPSValidation()
+                .when().get("https://localhost:8080/someEndpoint");
+    }
+
+
+    @Test
+    public void keystoreTest() {
+        given().keyStore("/pathToJKS", "password")
+                .when().get("https://localhost:8080/someEndpoint");
+    }
 }
