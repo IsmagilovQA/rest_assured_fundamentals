@@ -16,4 +16,6 @@ dependencies {
     testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
     compile group: 'io.rest-assured', name: 'json-schema-validator', version: '3.3.0'
+
+    compile group: 'com.github.scribejava', name: 'scribejava-apis', version: '2.5.3'
 }

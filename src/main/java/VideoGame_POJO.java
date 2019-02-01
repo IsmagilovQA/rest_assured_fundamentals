@@ -1,5 +1,3 @@
-import io.restassured.response.Response;
-
 public class VideoGame_POJO {
 
     private String reviewScore;
