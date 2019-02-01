@@ -48,8 +48,17 @@ public class GPathXMLTests extends TestConfig {
                "videoGames.videoGame.findAll " +
                        "{videoGame -> def category = videoGame.@category; category == 'Driving'}");
        System.out.println(allDrivingGames.get(0).get("name").toString());
+   }
 
 
+   @Test
+    public void getSingleNode() {
+       String responseAsString = get(EndPoint.VIDEOGAMES).asString();
+
+       Node videoGame = XmlPath.from(responseAsString).get(
+               "videoGames.videoGame.find {videoGame -> def name = videoGame.name; name == 'SimCity 2000'}");
+       String videoGameName = videoGame.get("name").toString();
+       System.out.println(videoGameName);
 
    }
 
